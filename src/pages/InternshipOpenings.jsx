@@ -1,0 +1,310 @@
+import { useState, useRef } from 'react';
+import { motion } from 'framer-motion';
+import { Laptop, Clock, CheckCircle2, GraduationCap, MapPin, ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { Checkbox } from '@/components/ui/checkbox';
+import { toast } from 'sonner';
+import Layout from '@/components/Layout';
+import { Link } from 'react-router-dom';
+import { useAdmin } from '@/context/AdminContext';
+
+
+
+import PageHeader from "@/components/PageHeader";
+
+const InternshipOpenings = () => {
+  const { internRoles, addInternApplication } = useAdmin();
+  const [isOpen, setIsOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    mobile: '',
+    role: '',
+    address: '',
+    qualification: '',
+    skills: '',
+    duration: '3 Months'
+  });
+
+  const handleApply = () => {
+    setIsOpen(true);
+    setIsSubmitted(false);
+  };
+
+  const handleInputChange = (e) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({ ...prev, [id]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    // Add to admin panel
+    addInternApplication({
+      name: formData.fullName,
+      email: formData.email,
+      phone: formData.mobile,
+      role: formData.role,
+      address: formData.address,
+      qualification: formData.qualification,
+      skills: formData.skills,
+      duration: formData.duration
+    });
+    
+    setIsSubmitting(false);
+    setIsSubmitted(true);
+    toast.success('Application submitted successfully!');
+    
+    setTimeout(() => {
+      setIsOpen(false);
+      setIsSubmitted(false);
+      setFormData({
+        fullName: '',
+        email: '',
+        mobile: '',
+        role: '',
+        address: '',
+        qualification: '',
+        skills: '',
+        duration: '3 Months'
+      });
+    }, 2000);
+  };
+
+  return (
+    <Layout>
+      <PageHeader title="Internship Programs" />
+      <section className="py-32 bg-white dark:bg-slate-950 overflow-hidden px-6 relative">
+        <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-[hsl(var(--primary))]/10 rounded-full blur-[100px] mix-blend-multiply dark:mix-blend-screen animate-pulse"></div>
+        <div className="container-custom relative z-10">
+          <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="inline-flex items-center gap-2 text-[hsl(var(--primary))] font-black hover:text-[hsl(var(--accent))] transition-all mb-16 group">
+            <div className="w-10 h-10 rounded-xl bg-[hsl(var(--primary))]/10 flex items-center justify-center group-hover:bg-[hsl(var(--primary))] group-hover:text-primary-foreground transition-colors">
+              <ArrowRight size={20} className="rotate-180" />
+            </div>
+            <span>Back to Careers</span>
+          </Link>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center max-w-2xl mx-auto mb-24 space-y-6"
+          >
+            <motion.span initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} className="text-[hsl(var(--accent))] font-bold tracking-wider uppercase text-sm block">Internship Program</motion.span>
+            <h2 className="text-4xl md:text-6xl font-black text-slate-900 dark:text-primary-foreground leading-tight">
+              Kickstart Your Career
+            </h2>
+            <p className="text-slate-600 dark:text-slate-400 text-lg font-medium leading-relaxed italic">
+              Join our elite internship program. Work on moonshot projects, learn from industry legends, and gain practical expertise that defines your future.
+            </p>
+            
+            <div className="flex justify-center pt-8">
+              <Button 
+                className="bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--accent))] hover:opacity-90 text-primary-foreground font-black py-8 px-12 text-xl rounded-2xl shadow-xl shadow-primary/20 transition-all hover:-translate-y-2 active:scale-95"
+                onClick={handleApply}
+              >
+                Launch Application
+              </Button>
+            </div>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }} 
+            whileInView={{ opacity: 1, scale: 1 }} 
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 }} 
+            className="text-center mt-20 p-16 md:p-24 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-[4rem] max-w-4xl mx-auto relative overflow-hidden group shadow-2xl"
+          >
+            <div className="absolute top-0 left-0 w-full h-[4px] bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--accent))] scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left" />
+            <div className="w-24 h-24 bg-white dark:bg-slate-800 rounded-[2rem] shadow-xl flex items-center justify-center mx-auto mb-10 transition-all group-hover:scale-110 group-hover:rotate-12 group-shadow border border-slate-100 dark:border-slate-700">
+               <GraduationCap className="w-12 h-12 text-[hsl(var(--primary))]" />
+            </div>
+            <h2 className="text-4xl font-black text-slate-900 dark:text-primary-foreground mb-6">Master the Standards</h2>
+            <p className="text-xl text-slate-600 dark:text-slate-400 italic font-medium leading-relaxed max-w-2xl mx-auto">
+              We offer proprietary mentorship programs designed to give you hands-on experience with production-grade technologies and elite industry protocols.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Internship Application Form Dialog */}
+      <Dialog open={isOpen} onOpenChange={setIsOpen}>
+        <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto bg-background/95 backdrop-blur-md border-primary/20">
+          <DialogHeader>
+            <DialogTitle className="text-3xl font-black text-slate-900 dark:text-primary-foreground leading-tight">
+              Apply for <span className="bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--accent))] bg-clip-text text-transparent">Future Internship</span>
+            </DialogTitle>
+            <DialogDescription className="text-lg font-medium text-slate-500 dark:text-slate-400 mt-2">
+              Accelerate your learning journey. Tell us about your ambitions.
+            </DialogDescription>
+          </DialogHeader>
+
+          {isSubmitted ? (
+            <div className="py-20 flex flex-col items-center justify-center text-center space-y-6">
+              <div className="w-24 h-24 rounded-[2.5rem] bg-gradient-to-br from-[hsl(var(--primary))] to-[hsl(var(--accent))] flex items-center justify-center mb-4 shadow-2xl animate-pulse">
+                <CheckCircle2 className="w-12 h-12 text-primary-foreground" />
+              </div>
+              <h3 className="text-3xl font-black text-slate-900 dark:text-primary-foreground">Transmission Successful!</h3>
+              <p className="text-lg text-slate-500 dark:text-slate-400 max-w-sm font-medium">
+                Your application has entered our acceleration pipeline. We'll synchronize with you via email.
+              </p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-8 py-6">
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="space-y-3">
+                  <Label htmlFor="fullName" className="text-xs font-black uppercase tracking-widest text-[hsl(var(--primary))] ml-1">Full Name</Label>
+                  <Input 
+                    id="fullName" 
+                    placeholder="John Doe" 
+                    required 
+                    className="bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800 py-7 px-5 text-lg rounded-xl focus:ring-2 focus:ring-[hsl(var(--primary))]"
+                    value={formData.fullName}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className="space-y-3">
+                  <Label htmlFor="email" className="text-xs font-black uppercase tracking-widest text-[hsl(var(--primary))] ml-1">Digital Identity</Label>
+                  <Input 
+                    id="email" 
+                    type="email" 
+                    placeholder="john@example.com" 
+                    required 
+                    className="bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800 py-7 px-5 text-lg rounded-xl focus:ring-2 focus:ring-[hsl(var(--primary))]"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="space-y-3">
+                  <Label htmlFor="mobile" className="text-xs font-black uppercase tracking-widest text-[hsl(var(--primary))] ml-1">Direct Line</Label>
+                  <Input 
+                    id="mobile" 
+                    type="tel" 
+                    placeholder="+91" 
+                    required 
+                    className="bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800 py-7 px-5 text-lg rounded-xl focus:ring-2 focus:ring-[hsl(var(--primary))]"
+                    value={formData.mobile}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className="space-y-3">
+                  <Label htmlFor="role" className="text-xs font-black uppercase tracking-widest text-[hsl(var(--primary))] ml-1">Target Dimension</Label>
+                  <select
+                    id="role"
+                    required
+                    value={formData.role}
+                    onChange={handleInputChange}
+                    className="w-full h-[60px] rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 px-5 text-lg font-bold text-slate-700 focus:outline-none focus:ring-2 focus:ring-[hsl(var(--primary))] appearance-none"
+                  >
+                    <option value="" disabled>Select a role...</option>
+                    {internRoles.map((r) => (
+                      <option key={r.id || r.roleName} value={r.roleName}>{r.roleName}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <Label htmlFor="address" className="text-xs font-black uppercase tracking-widest text-[hsl(var(--primary))] ml-1">Current Base</Label>
+                <Textarea 
+                  id="address" 
+                  placeholder="Your residential address" 
+                  className="bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800 p-5 text-lg rounded-xl min-h-[100px] resize-none focus:ring-2 focus:ring-[hsl(var(--primary))]"
+                  value={formData.address}
+                  onChange={handleInputChange}
+                />
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="space-y-3">
+                  <Label htmlFor="qualification" className="text-xs font-black uppercase tracking-widest text-[hsl(var(--primary))] ml-1">Education Status</Label>
+                  <Input 
+                    id="qualification" 
+                    placeholder="e.g. 3rd Year B.Tech" 
+                    required 
+                    className="bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800 py-7 px-5 text-lg rounded-xl focus:ring-2 focus:ring-[hsl(var(--primary))]"
+                    value={formData.qualification}
+                    onChange={handleInputChange}
+                  />
+                </div>
+                <div className="space-y-3">
+                  <Label htmlFor="duration" className="text-xs font-black uppercase tracking-widest text-[hsl(var(--primary))] ml-1">Mission Length</Label>
+                  <select 
+                    id="duration" 
+                    className="w-full h-[60px] rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 px-5 text-lg font-bold text-slate-700 focus:outline-none focus:ring-2 focus:ring-[hsl(var(--primary))] appearance-none"
+                    value={formData.duration}
+                    onChange={handleInputChange}
+                    required
+                  >
+                    <option value="3 Months">3 Months</option>
+                    <option value="6 Months">6 Months</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="space-y-3">
+                <Label htmlFor="skills" className="text-xs font-black uppercase tracking-widest text-[hsl(var(--primary))] ml-1">Primary Specialties</Label>
+                <Input 
+                  id="skills" 
+                  placeholder="e.g. React, UI Design" 
+                  required 
+                  className="bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800 py-7 px-5 text-lg rounded-xl focus:ring-2 focus:ring-[hsl(var(--primary))]"
+                  value={formData.skills}
+                  onChange={handleInputChange}
+                />
+              </div>
+
+              <div className="flex items-center space-x-3 pt-4">
+                <Checkbox id="terms" required className="w-5 h-5 rounded-lg border-slate-300 data-[state=checked]:bg-[hsl(var(--primary))]" />
+                <Label htmlFor="terms" className="text-sm font-bold text-slate-600 dark:text-slate-400 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                  I confirm my dedication and agree to the <span className="text-[hsl(var(--primary))] hover:underline cursor-pointer">Protocol Terms</span>.
+                </Label>
+              </div>
+
+              <DialogFooter className="pt-10 flex gap-4">
+                <Button 
+                  type="button" 
+                  variant="outline" 
+                  onClick={() => setIsOpen(false)}
+                  disabled={isSubmitting}
+                  className="border-slate-200 dark:border-slate-800 text-slate-600 font-bold py-7 px-8 rounded-xl flex-1 md:flex-none"
+                >
+                  Recall
+                </Button>
+                <Button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--accent))] hover:opacity-90 text-primary-foreground font-black py-7 px-10 rounded-xl shadow-xl shadow-primary/20 flex-1 md:flex-none active:scale-95"
+                >
+                  {isSubmitting ? 'Transmitting...' : 'Initiate Internship'}
+                </Button>
+              </DialogFooter>
+            </form>
+          )}
+        </DialogContent>
+      </Dialog>
+    </Layout>
+  );
+};
+
+export default InternshipOpenings;

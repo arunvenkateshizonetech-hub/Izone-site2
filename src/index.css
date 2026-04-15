@@ -1,0 +1,401 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+
+/* Tailwind layers */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* Root CSS Variables — SaaS Palette */
+:root {
+  --background: 50 100% 97%; /* #fffdf5 */
+  --foreground: 30 30% 15%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 30 30% 15%;
+
+  /* 🔥 PRIMARY – Rich Gold */
+  --primary: 42 65% 55%; /* darker gold */
+  --primary-foreground: 0 0% 100%;
+
+  /* ❌ REMOVE LIGHT YELLOW → CHANGE TO DEEP GOLD */
+  --secondary: 45 55% 50%; /* was too light */
+  --secondary-foreground: 0 0% 100%;
+
+  /* 🔥 ACCENT – Strong Premium Gold */
+  --accent: 38 60% 40%;
+  --accent-foreground: 0 0% 100%;
+
+  --muted: 45 40% 85%;
+  --muted-foreground: 30 20% 35%;
+
+  --border: 45 40% 80%;
+  --ring: 42 65% 55%;
+
+  --radius: 1rem;
+}
+
+.dark {
+  --background: 30 40% 8%;
+  --foreground: 50 60% 90%;
+
+  --card: 30 30% 12%;
+  --card-foreground: 50 60% 90%;
+
+  --primary: 42 65% 55%;
+  --secondary: 45 55% 50%;
+  --accent: 38 60% 45%;
+
+  --muted: 30 20% 20%;
+  --muted-foreground: 50 20% 70%;
+
+  --border: 30 20% 25%;
+  --ring: 42 65% 55%;
+}
+/* Base Styles */
+body {
+  font-family: "Poppins", system-ui, sans-serif;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scroll Behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: inherit;
+}
+
+blockquote,
+.serif-text {
+  font-family: serif;
+}
+
+code,
+pre,
+kbd,
+samp {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+/* Components */
+.glass-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(255, 255, 255, 0.4) 100%
+  );
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius);
+  box-shadow: 
+    0 8px 32px 0 rgba(31, 38, 135, 0.07),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark .glass-card {
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.7) 0%,
+    rgba(15, 23, 42, 0.4) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glow-border {
+  border: 1px solid transparent;
+  background: 
+    linear-gradient(hsl(var(--card)), hsl(var(--card))) padding-box,
+    linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent))) border-box;
+  box-shadow: 0 10px 40px hsla(262, 100%, 56%, 0.1);
+}
+
+.glow-text {
+  background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 10px hsla(262, 100%, 56%, 0.3));
+}
+
+.gradient-text {
+  background: linear-gradient(
+    to right,
+    hsl(var(--primary)),
+    hsl(var(--accent)),
+    hsl(var(--secondary))
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hover-glow {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-glow:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 25px 50px -12px hsla(262, 100%, 56%, 0.25),
+    0 0 20px hsla(261, 100%, 74%, 0.15);
+  border-color: hsla(261, 100%, 74%, 0.4);
+}
+
+.section-padding {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.container-custom {
+  max-width: 1120px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Utilities & Animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(var(--primary) / 0.6);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+.animate-slide-up {
+  animation: slide-up 0.6s ease-out forwards;
+}
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.3);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.5);
+}
+
+/* 3D Book-Flip Gallery */
+@property --page-rotate {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+@property --spine-shift {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0px;
+}
+
+.book-gallery-wrapper {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.book-gallery-scene {
+  width: 100%;
+  min-height: 620px;
+  perspective: 1800px;
+  transform-style: preserve-3d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  border-radius: 2rem;
+  padding: 5rem 2rem;
+  background:
+    linear-gradient(
+      135deg,
+      hsl(var(--primary) / 0.06),
+      hsl(var(--background)) 40%,
+      hsl(var(--primary) / 0.04)
+    );
+  border: 1px solid hsl(var(--border) / 0.3);
+}
+
+.book-gallery-bg-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4vw;
+  pointer-events: none;
+  z-index: 0;
+  color: hsl(var(--foreground) / 0.05);
+  font-size: clamp(3rem, 12vw, 10rem);
+  font-weight: 800;
+  line-height: 0.8;
+  text-transform: uppercase;
+}
+
+.book-gallery-bg-text span {
+  display: block;
+}
+
+.galeria-book-3d {
+  position: relative;
+  width: 360px;
+  height: 500px;
+  perspective: 1800px;
+  transform-style: preserve-3d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  --spine-shift: 0px;
+  transform: translateX(var(--spine-shift));
+  transition: --spine-shift 0.5s ease;
+}
+
+.galeria-book-3d.book-open {
+  --spine-shift: 160px;
+}
+
+.galeria-book-3d__item {
+  position: absolute;
+  width: 360px;
+  height: 500px;
+  perspective: 1800px;
+  transform-style: preserve-3d;
+  transform-origin: left center;
+  --page-rotate: 0deg;
+  transform: rotateY(var(--page-rotate));
+  transition:
+    --page-rotate 0.55s ease-in-out,
+    z-index 0s;
+  transition-delay:
+    calc((5 - var(--i)) * 0.08s),
+    calc((5 - var(--i)) * 0.08s + 0.25s);
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.14),
+    0 3px 12px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  z-index: calc(10 - var(--i));
+  border-radius: 1.5rem;
+}
+
+.galeria-book-3d__item.is-open {
+  --page-rotate: -180deg;
+  transition-delay: 0s, 0s;
+  z-index: calc(20 + var(--i));
+}
+
+.galeria-book-3d__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+  background: #f4f4f4;
+  backface-visibility: hidden;
+  border-radius: 1.5rem;
+  border: 1px solid hsl(var(--border) / 0.4);
+}
+
+.galeria-book-3d__item img:nth-child(2) {
+  transform: rotateY(180deg) translateZ(1px);
+  z-index: 1;
+}
+
+.book-caption {
+  position: absolute;
+  left: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 3;
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: white;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .book-gallery-scene {
+    min-height: 480px;
+    padding: 3rem 1rem;
+  }
+
+  .book-gallery-bg-text {
+    font-size: clamp(2rem, 12vw, 4rem);
+    opacity: 0.6;
+    padding: 0 1rem;
+  }
+
+  .galeria-book-3d {
+    width: 260px;
+    height: 370px;
+  }
+
+  .galeria-book-3d__item {
+    width: 260px;
+    height: 370px;
+  }
+
+  .galeria-book-3d.book-open {
+    --spine-shift: 100px;
+  }
+}
