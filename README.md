@@ -1,3 +1,4 @@
+
 # 🚀 Izone Technologies — Official Website
 
 A premium, fully responsive corporate website for **Izone Technologies**, an Information Technology company based in Tiruchirappalli, Tamil Nadu.
@@ -200,3 +201,6 @@ Deployed on **Vercel**. The `vercel.json` rewrites all routes to `index.html` fo
 📧 innovativezone.tech@gmail.com
 📞 +91-9943077284
 🕐 Mon–Sat: 10:00 AM – 6:30 PM
+
+# Izone-site2
+everything is done
