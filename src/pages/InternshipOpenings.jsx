@@ -149,7 +149,7 @@ const InternshipOpenings = () => {
         <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto bg-background/95 backdrop-blur-md border-primary/20">
           <DialogHeader>
             <DialogTitle className="text-3xl font-black text-slate-900 dark:text-primary-foreground leading-tight">
-              Apply for <span className="bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--accent))] bg-clip-text text-transparent">Future Internship</span>
+              Apply for <span className="text-primary">Future Internship</span>
             </DialogTitle>
             <DialogDescription className="text-lg font-medium text-slate-500 dark:text-slate-400 mt-2">
               Accelerate your learning journey. Tell us about your ambitions.

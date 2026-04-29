@@ -167,7 +167,7 @@ const Services = () => {
             >
                <motion.span initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} className="text-[hsl(var(--accent))] font-bold tracking-wider uppercase text-sm mb-4 block">Key Benefits</motion.span>
               <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-primary-foreground mb-8 leading-tight">
-                Why Choose Our <span className="bg-gradient-to-r from-[hsl(var(--accent))] to-[hsl(var(--secondary))] bg-clip-text text-transparent">Solutions?</span>
+                Why Choose Our <span className="text-primary">Solutions?</span>
               </h2>
               <div className="space-y-10">
                 {[

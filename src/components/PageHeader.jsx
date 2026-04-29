@@ -30,11 +30,9 @@ const PageHeader = ({ title, description }) => {
           </div>
 
           <div className="relative px-4 w-full max-w-4xl">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight md:leading-[1.1] tracking-tight">
-              {title.split(' ')[0]}{' '}
-              <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent inline-block pb-2">
-                {title.split(' ').slice(1).join(' ') || 'Protocols'}
-              </span>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight md:leading-[1.1] tracking-tight">
+              <span className="block text-foreground">{title.split(' ').slice(0, Math.ceil(title.split(' ').length / 2)).join(' ')}</span>
+              <span className="block text-primary">{title.split(' ').slice(Math.ceil(title.split(' ').length / 2)).join(' ')}</span>
             </h1>
           </div>
 

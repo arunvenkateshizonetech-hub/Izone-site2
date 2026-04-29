@@ -126,11 +126,7 @@ const Portfolio = () => {
                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-10 group-hover:translate-y-0">
-                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-2xl scale-0 group-hover:scale-100 transition-transform duration-500 delay-100">
-                      <ExternalLink className="w-6 h-6 text-[hsl(var(--primary))]" />
-                    </div>
-                  </div>
+
                 </div>
                 <div className="p-10 flex-1 flex flex-col">
                   <div className="mb-8">

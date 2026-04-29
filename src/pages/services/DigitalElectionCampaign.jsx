@@ -86,9 +86,9 @@ const DigitalElectionCampaign = () => {
             <motion.span initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} className="inline-block px-5 py-2 rounded-2xl bg-[hsl(var(--primary))]/10 border border-[hsl(var(--primary))]/30 text-[hsl(var(--primary))] text-sm font-black uppercase tracking-widest">
               Political Intelligence
             </motion.span>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-slate-900 dark:text-primary-foreground leading-[1.1] tracking-tight">
-              Win High-Frequency
-              <span className="bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--accent))] bg-clip-text text-transparent block mt-0">Digital Elections</span>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight">
+              <span className="block text-foreground">Win High-Frequency</span>
+              <span className="text-primary block mt-0">Digital Elections</span>
             </h1>
             <p className="text-xl text-slate-600 dark:text-slate-400 font-medium leading-relaxed italic">
               Advanced planetary-scale outreach protocols and tactical constituency mapping engineered for absolute electoral dominance.
@@ -129,13 +129,13 @@ const DigitalElectionCampaign = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-[hsl(var(--primary))] to-[hsl(var(--accent))] p-16 md:p-24 rounded-[4rem] text-center relative overflow-hidden shadow-2xl shadow-primary/30 group"
+            className="bg-slate-900 p-16 md:p-24 rounded-[4rem] text-center relative overflow-hidden shadow-2xl group"
           >
              <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 mix-blend-overlay"></div>
-             <div className="absolute top-[-20%] right-[-10%] w-[400px] h-[400px] bg-white/10 rounded-full blur-[100px] animate-pulse"></div>
+             <div className="absolute top-[-20%] right-[-10%] w-[400px] h-[400px] bg-white/5 rounded-full blur-[100px] animate-pulse"></div>
             <div className="relative z-10">
-              <h2 className="text-4xl md:text-5xl font-black text-primary-foreground mb-6 leading-tight">Ready to Command the Electorate?</h2>
-              <p className="text-xl text-primary-foreground/90 font-bold mb-12 italic max-w-2xl mx-auto">
+              <h2 className="text-4xl md:text-5xl font-black text-white mb-6 leading-tight">Ready to Command the Electorate?</h2>
+              <p className="text-xl text-slate-300 font-bold mb-12 italic max-w-2xl mx-auto">
                 Synchronize with our specialized fleet today and launch your high-performance campaign with tactical precision.
               </p>
               <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>

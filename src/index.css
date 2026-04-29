@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 
 /* Tailwind layers */
@@ -7,50 +7,56 @@
 @import "tailwindcss/utilities";
 
 /* Root CSS Variables — SaaS Palette */
-:root {
-  --background: 50 100% 97%; /* #fffdf5 */
-  --foreground: 30 30% 15%;
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 222 28% 12%;
 
-  --card: 0 0% 100%;
-  --card-foreground: 30 30% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 28% 12%;
 
-  /* 🔥 PRIMARY – Rich Gold */
-  --primary: 42 65% 55%; /* darker gold */
-  --primary-foreground: 0 0% 100%;
+    --primary: 159 58% 34%;
+    --primary-foreground: 0 0% 100%;
 
-  /* ❌ REMOVE LIGHT YELLOW → CHANGE TO DEEP GOLD */
-  --secondary: 45 55% 50%; /* was too light */
-  --secondary-foreground: 0 0% 100%;
+    --secondary: 222 28% 14%;
+    --secondary-foreground: 0 0% 100%;
 
-  /* 🔥 ACCENT – Strong Premium Gold */
-  --accent: 38 60% 40%;
-  --accent-foreground: 0 0% 100%;
+    --accent: 159 58% 34%;
+    --accent-foreground: 0 0% 100%;
 
-  --muted: 45 40% 85%;
-  --muted-foreground: 30 20% 35%;
+    --muted: 150 18% 96%;
+    --muted-foreground: 220 9% 46%;
 
-  --border: 45 40% 80%;
-  --ring: 42 65% 55%;
+    --border: 220 14% 90%;
+    --input: 220 14% 90%;
+    --ring: 159 58% 34%;
 
-  --radius: 1rem;
-}
+    --radius: 1rem;
+  }
 
-.dark {
-  --background: 30 40% 8%;
-  --foreground: 50 60% 90%;
+  .dark {
+    --background: 222 28% 7%;
+    --foreground: 150 15% 92%;
 
-  --card: 30 30% 12%;
-  --card-foreground: 50 60% 90%;
+    --card: 222 24% 11%;
+    --card-foreground: 150 15% 92%;
 
-  --primary: 42 65% 55%;
-  --secondary: 45 55% 50%;
-  --accent: 38 60% 45%;
+    --primary: 159 55% 45%;
+    --primary-foreground: 222 28% 7%;
 
-  --muted: 30 20% 20%;
-  --muted-foreground: 50 20% 70%;
+    --secondary: 220 12% 22%;
+    --secondary-foreground: 150 15% 92%;
 
-  --border: 30 20% 25%;
-  --ring: 42 65% 55%;
+    --accent: 159 55% 45%;
+    --accent-foreground: 222 28% 7%;
+
+    --muted: 222 20% 14%;
+    --muted-foreground: 150 8% 65%;
+
+    --border: 222 18% 20%;
+    --input: 222 18% 20%;
+    --ring: 159 55% 45%;
+  }
 }
 /* Base Styles */
 body {
@@ -375,27 +381,77 @@ samp {
 
 @media (max-width: 768px) {
   .book-gallery-scene {
-    min-height: 480px;
-    padding: 3rem 1rem;
+    min-height: 440px;
+    padding: 2.5rem 0.75rem;
+    border-radius: 1.5rem;
   }
 
   .book-gallery-bg-text {
-    font-size: clamp(2rem, 12vw, 4rem);
-    opacity: 0.6;
-    padding: 0 1rem;
+    font-size: clamp(1.5rem, 10vw, 3rem);
+    opacity: 0.4;
+    padding: 0 0.75rem;
   }
 
   .galeria-book-3d {
-    width: 260px;
-    height: 370px;
+    width: 240px;
+    height: 340px;
   }
 
   .galeria-book-3d__item {
-    width: 260px;
-    height: 370px;
+    width: 240px;
+    height: 340px;
+    border-radius: 1rem;
+  }
+
+  .galeria-book-3d__item img {
+    border-radius: 1rem;
   }
 
   .galeria-book-3d.book-open {
-    --spine-shift: 100px;
+    --spine-shift: 80px;
+  }
+
+  .book-caption {
+    left: 0.75rem;
+    bottom: 0.75rem;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.8rem;
   }
 }
+
+/* Service Card Animation (Uiverse.io style) */
+.service-card-premium {
+  transition: all 0.4s;
+}
+
+.service-card-premium:hover {
+  transform: scale(1.1);
+  background: hsl(var(--primary) / 0.05);
+}
+
+.service-card-premium .first-content {
+  height: 100%;
+  width: 100%;
+  transition: all 0.4s;
+  opacity: 1;
+}
+
+.service-card-premium:hover .first-content {
+  height: 0px;
+  opacity: 0;
+}
+
+.service-card-premium .second-content {
+  height: 0%;
+  width: 100%;
+  opacity: 0;
+  transition: all 0.4s;
+  transform: rotate(90deg) scale(-1);
+}
+
+.service-card-premium:hover .second-content {
+  opacity: 1;
+  height: 100%;
+  transform: rotate(0deg) scale(1);
+}
+

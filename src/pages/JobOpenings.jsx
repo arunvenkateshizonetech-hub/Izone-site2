@@ -188,7 +188,7 @@ const JobOpenings = () => {
         <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto bg-background/95 backdrop-blur-md border-primary/20">
           <DialogHeader>
             <DialogTitle className="text-3xl font-black text-slate-900 dark:text-primary-foreground leading-tight">
-              Join as <span className="bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--accent))] bg-clip-text text-transparent">{selectedJob?.roleName || selectedJob?.title}</span>
+              Join as <span className="text-primary">{selectedJob?.roleName || selectedJob?.title}</span>
             </DialogTitle>
             <DialogDescription className="text-lg font-medium text-slate-500 dark:text-slate-400 mt-2">
               Ready to create something legendary? Tell us about yourself.

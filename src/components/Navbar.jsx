@@ -175,7 +175,7 @@ export function Navbar() {
           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[hsl(var(--primary))] to-[hsl(var(--accent))] p-2 flex items-center justify-center transition-transform group-hover:scale-110 shadow-lg shadow-primary/20">
             <img src="/logo.png" alt="logo" className="w-full h-full object-contain brightness-0 invert opacity-80" />
           </div>
-          <span className={`font-display text-2xl font-black tracking-tight transition-colors ${
+          <span className={`font-display text-xl sm:text-2xl font-black tracking-tight transition-colors ${
             scrolled ? "text-slate-900 dark:text-white" : "text-slate-900 dark:text-white"
           }`}>
             Izone<span className="text-[hsl(var(--accent))]">Tech</span>
@@ -279,9 +279,9 @@ export function Navbar() {
 
 
         {/* Mobile Menu Button */}
-        <div className="md:hidden flex items-center gap-2">
+        <div className="lg:hidden flex items-center gap-2">
           <ThemeToggle />
-          <button onClick={() => setIsOpen(!isOpen)}>
+          <button onClick={() => setIsOpen(!isOpen)} className="p-2 text-slate-700 dark:text-slate-300">
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -294,7 +294,7 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white dark:bg-slate-900 mt-4 mx-4 rounded-[2rem] overflow-hidden shadow-2xl border border-slate-100 dark:border-slate-800"
+            className="lg:hidden bg-white dark:bg-slate-900 mt-4 mx-4 rounded-[2rem] overflow-hidden shadow-2xl border border-slate-100 dark:border-slate-800"
           >
             <div className="p-6 flex flex-col gap-3">
               {navLinks.map((link) => (

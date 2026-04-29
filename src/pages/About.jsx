@@ -91,7 +91,7 @@ const ceoData = {
   name: "Mr.B.Kesavan M.E",
   role: "Founder/CEO",
   description:
-    "Visionary leader with 15+ years of experience in the tech industry. Kesavan founded Izone Technologies with a mission to democratize world-class web development and help businesses of all sizes achieve digital excellence.",
+    "Founder and CEO of Izone Technologies. Over 15 years building software for Indian and international businesses. Kesavan started Izone with a focus on engineering quality and long-term client partnerships — values that still shape every project the team takes on.",
 };
 
 const milestones = [
@@ -259,11 +259,13 @@ const About = () => {
     <Layout>
       <PageHeader 
         title="Innovating the Digital Landscape" 
-        description="zone Technology was established in 2016 at Trichy with diverse range of Knowledge, where Izone Technology is an IT Hub consists of all types of IT Services includes Web Designing and Development, Software and Mobile App Development, Digital Marketing Services Like Bulk SMS, Bulk Voice Call & Bulk WhatsApp, and also Students Career Development programs along with Final Year project Guidance Etc."
+        description="Izone Technologies started in 2016 with a simple goal: build software, mobile, and AI products that actually move the needle for businesses.
+Today we partner with companies across India and abroad on web platforms, mobile apps, AI integrations, cloud infrastructure, and end-to-end digital marketing.
+We care about engineering quality, measurable outcomes, and being the kind of technology partner that picks up the phone."
       />
 
       {/* Mission & Vision */}
-      <section className="py-32 bg-white dark:bg-slate-950 overflow-hidden px-6 relative">
+      <section className="py-16 md:py-32 bg-white dark:bg-slate-950 overflow-hidden px-6 relative">
         <div className="absolute top-[-10%] right-[-10%] w-[400px] h-[400px] bg-[hsl(var(--primary))]/20 rounded-full blur-[100px] mix-blend-multiply dark:mix-blend-screen animate-pulse"></div>
         <div className="container-custom relative z-10">
           <div className="text-center mb-16 space-y-4">
@@ -275,14 +277,14 @@ const About = () => {
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="p-12 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-[2rem] hover:shadow-2xl hover:shadow-[hsl(var(--primary))]/10 transition-all duration-500 relative group overflow-hidden"
+              className="p-8 md:p-12 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-[2rem] hover:shadow-2xl hover:shadow-[hsl(var(--primary))]/10 transition-all duration-500 relative group overflow-hidden"
             >
               <div className="mb-8 w-16 h-16 bg-[hsl(var(--primary))]/10 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110 group-hover:bg-[hsl(var(--primary))] group-hover:text-primary-foreground group-shadow">
                 <Target className="w-8 h-8 text-[hsl(var(--primary))] group-hover:text-primary-foreground transition-colors" />
               </div>
               <h2 className="text-3xl font-bold mb-6 text-slate-800 dark:text-primary-foreground group-hover:text-[hsl(var(--accent))] transition-colors">Our Mission</h2>
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-lg font-medium">
-                We strive to develop smart application and websites for our clients for their IT efficiency and business profitability and to be a global leader and expert in providing Smart Training with smart skills.
+                To build dependable software, mobile, and AI solutions that improve our clients' efficiency, profitability, and customer experience — and to share that craft through hands-on training programs that grow the next generation of engineers.
               </p>
               <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--accent))] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
             </motion.div>
@@ -291,7 +293,7 @@ const About = () => {
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="p-12 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-[2rem] hover:shadow-2xl hover:shadow-[hsl(var(--primary))]/10 transition-all duration-500 relative group overflow-hidden"
+              className="p-8 md:p-12 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-[2rem] hover:shadow-2xl hover:shadow-[hsl(var(--primary))]/10 transition-all duration-500 relative group overflow-hidden"
             >
               <div className="mb-8 w-16 h-16 bg-[hsl(var(--accent))]/10 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110 group-hover:bg-[hsl(var(--accent))] group-hover:text-primary-foreground group-shadow">
                 <Eye className="w-8 h-8 text-[hsl(var(--accent))] group-hover:text-primary-foreground transition-colors" />
@@ -307,7 +309,7 @@ const About = () => {
       </section>
 
       {/* Values */}
-      <section className="py-32 bg-slate-50 dark:bg-slate-900 overflow-hidden px-6">
+      <section className="py-16 md:py-32 bg-slate-50 dark:bg-slate-900 overflow-hidden px-6">
         <div className="container-custom">
           <div className="text-center mb-16 space-y-4">
              <motion.span initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} className="text-[hsl(var(--accent))] font-bold tracking-wider uppercase text-sm">Core Beliefs</motion.span>
@@ -322,7 +324,7 @@ const About = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="p-10 bg-white dark:bg-slate-950 border border-slate-100 dark:border-slate-800 rounded-[2rem] hover:shadow-2xl hover:shadow-[hsl(var(--accent))]/5 transition-all duration-500 group text-center"
+                className="p-8 bg-white dark:bg-slate-950 border border-slate-100 dark:border-slate-800 rounded-[2rem] hover:shadow-2xl hover:shadow-[hsl(var(--accent))]/5 transition-all duration-500 group text-center"
               >
                 <div className="w-16 h-16 bg-[hsl(var(--accent))]/10 rounded-2xl flex items-center justify-center mx-auto mb-8 transition-transform group-hover:scale-110 group-hover:bg-[hsl(var(--accent))] group-hover:text-primary-foreground shadow-inner">
                   <value.icon className="w-8 h-8 text-[hsl(var(--accent))] group-hover:text-primary-foreground transition-colors" />
@@ -338,7 +340,7 @@ const About = () => {
       </section>
 
       {/* Team */}
-      <section id="team" className="py-32 bg-white dark:bg-slate-950 overflow-hidden px-6">
+      <section id="team" className="py-16 md:py-32 bg-white dark:bg-slate-950 overflow-hidden px-6">
         <div className="container-custom">
           {/* CEO Highlight */}
           <div className="max-w-5xl mx-auto mb-32 group">
@@ -367,7 +369,7 @@ const About = () => {
       </section>
 
       {/* Behind the Scenes */}
-      <section className="py-32 bg-slate-50 dark:bg-slate-900 overflow-hidden px-6">
+      <section className="py-16 md:py-32 bg-slate-50 dark:bg-slate-900 overflow-hidden px-6">
         <div className="container-custom">
           <div className="text-center mb-16 space-y-4">
             <motion.span
@@ -422,7 +424,7 @@ const About = () => {
       </section>
 
       {/* Timeline */}
-      <section className="py-32 bg-slate-50 dark:bg-slate-900 overflow-hidden px-6 relative">
+      <section className="py-16 md:py-32 bg-slate-50 dark:bg-slate-900 overflow-hidden px-6 relative">
         <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-[hsl(var(--primary))]/20 rounded-full blur-[100px] mix-blend-multiply dark:mix-blend-screen animate-pulse"></div>
         <div className="container-custom relative z-10">
           <div className="text-center mb-20 space-y-4">
@@ -446,9 +448,9 @@ const About = () => {
                 }`}
               >
                 <div className={`w-full md:w-1/2 ${index % 2 === 0 ? "md:pr-16 md:text-right" : "md:pl-16"} pl-10 md:pl-0`}>
-                  <div className="p-10 bg-white dark:bg-slate-950 border border-slate-100 dark:border-slate-800 rounded-[2rem] shadow-xl hover:shadow-2xl transition-all duration-500 relative group overflow-hidden">
+                  <div className="p-8 md:p-10 bg-white dark:bg-slate-950 border border-slate-100 dark:border-slate-800 rounded-[2rem] shadow-xl hover:shadow-2xl transition-all duration-500 relative group overflow-hidden">
                     <div className={`text-3xl font-black text-[hsl(var(--primary))] mb-4 flex items-center justify-between ${index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"}`}>
-                      <span className="bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--accent))] bg-clip-text text-transparent italic">#{milestone.year}</span>
+                      <span className="text-primary italic">#{milestone.year}</span>
                       <Calendar className="text-slate-300 dark:text-slate-700 w-8 h-8 group-hover:text-[hsl(var(--accent))] transition-colors" />
                     </div>
                     <h3 className="text-2xl font-bold mb-4 text-slate-900 dark:text-primary-foreground group-hover:text-[hsl(var(--accent))] transition-colors">{milestone.title}</h3>

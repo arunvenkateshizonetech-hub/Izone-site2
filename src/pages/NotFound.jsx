@@ -24,7 +24,7 @@ const NotFound = () => {
            transition={{ duration: 0.8, type: "spring" }}
            className="mb-8"
         >
-          <h1 className="text-9xl font-black bg-gradient-to-r from-[hsl(var(--primary))] via-[hsl(var(--accent))] to-[hsl(var(--secondary))] bg-clip-text text-transparent drop-shadow-2xl">
+          <h1 className="text-9xl font-black text-primary drop-shadow-2xl">
             404
           </h1>
         </motion.div>

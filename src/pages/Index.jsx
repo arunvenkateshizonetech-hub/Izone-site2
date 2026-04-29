@@ -19,6 +19,11 @@ import {
   Star,
   Quote,
   Twitter,
+  Smartphone,
+  Brain,
+  Cloud,
+  Megaphone,
+  Palette,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -141,27 +146,51 @@ const WordAnimation = ({ text, delay = 0, className = "" }) => {
 const services = [
   {
     icon: Code,
-    title: "Custom Development",
-    description:
-      "Tailored web solutions built with cutting-edge technologies to meet your unique business needs.",
+    title: "Web & Software Development",
+    description: "Custom web apps and enterprise software, built to scale.",
+    details: "React, Next.js, Node, Python, .NET. Architected for performance, observability, and a clean handoff.",
+    tags: ["React", "Next.js", "Node.js", "APIs", "SaaS"],
+    path: "/development?service=web-development",
   },
   {
-    icon: Layers,
-    title: "Responsive Design",
-    description:
-      "Beautiful, mobile-first designs that look stunning and perform flawlessly on all devices.",
+    icon: Smartphone,
+    title: "Mobile App Development",
+    description: "Native and cross-platform apps users keep coming back to.",
+    details: "iOS, Android, Flutter, React Native. From MVPs to App Store launches and post-launch growth.",
+    tags: ["iOS", "Android", "Flutter", "React Native"],
+    path: "/development/app-development",
   },
   {
-    icon: Zap,
-    title: "Performance",
-    description:
-      "Lightning-fast applications optimized for speed, SEO, and exceptional user experience.",
+    icon: Brain,
+    title: "AI & Machine Learning",
+    description: "Practical AI that drives revenue, not just demos.",
+    details: "Chatbots, computer vision, predictive analytics, GenAI integrations, and custom ML models trained on your data.",
+    tags: ["LLMs", "Computer Vision", "Predictive ML", "RAG"],
+    path: "/development/ai-ml",
   },
   {
-    icon: Shield,
-    title: "Security First",
-    description:
-      "Enterprise-grade security practices to protect your data and ensure compliance.",
+    icon: Cloud,
+    title: "Cloud & DevOps",
+    description: "Cloud-native infrastructure with CI/CD that just works.",
+    details: "AWS, Azure, GCP. Containerization, IaC, monitoring, and 99.9% uptime SLAs for production workloads.",
+    tags: ["AWS", "Azure", "Docker", "Kubernetes", "CI/CD"],
+    path: "/development/cloud-devops",
+  },
+  {
+    icon: Megaphone,
+    title: "Digital Marketing",
+    description: "Growth across SMS, WhatsApp, social, and content.",
+    details: "Bulk SMS, WhatsApp marketing, social media management, content writing, and election campaigns.",
+    tags: ["SMS", "WhatsApp", "Social", "Content"],
+    path: "/services",
+  },
+  {
+    icon: Palette,
+    title: "UI/UX & Branding",
+    description: "Interfaces and identities that earn trust at first glance.",
+    details: "Design systems, prototypes, polished UI, and full brand identities for digital and print.",
+    tags: ["Design Systems", "Prototypes", "Identity"],
+    path: "/development?service=ui-ux-design",
   },
 ];
 
@@ -250,6 +279,7 @@ const Index = () => {
   const { popups, testimonials } = useAdmin();
   const activePopup = popups?.find((p) => p.isActive) ?? null;
   const [dismissed, setDismissed] = useState(false);
+  const [hoveredServiceIndex, setHoveredServiceIndex] = useState(null);
 
   return (
     <Layout>
@@ -281,7 +311,7 @@ const Index = () => {
       </AnimatePresence>
 
       {/* Hero Section */}
-      <section id="hero" className="relative lg:min-h-screen flex items-start lg:items-center pt-24 lg:pt-32 pb-12 lg:pb-20 overflow-hidden bg-background">
+      <section id="hero" className="relative lg:min-h-screen flex items-start lg:items-center pt-24 md:pt-32 pb-12 md:pb-20 overflow-hidden bg-background">
         {/* Background Elements */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
           <div className="absolute top-[10%] left-[-5%] w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] animate-pulse" />
@@ -308,19 +338,19 @@ const Index = () => {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8 }}
-                  className="text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.1] text-foreground tracking-tight"
+                  className="text-4xl md:text-5xl lg:text-7xl font-bold leading-[1.1] tracking-tight"
                 >
-                  We Build <br />
-                  <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">Digital Excellence.</span>
+                  <span className="block text-foreground">We Build</span>
+                  <span className="block text-primary">Digital Excellence.</span>
                 </motion.h1>
 
                 <motion.p
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.1 }}
-                  className="text-xl md:text-2xl text-muted-foreground/80 max-w-xl font-medium leading-relaxed italic"
+                  className="text-lg md:text-2xl text-muted-foreground/80 max-w-xl font-medium leading-relaxed italic"
                 >
-                  Izone Technologies engineers exceptional web ecosystems that command industry dominance. From concept to planetary deployment, we bring your vision to life.
+                  From custom software and AI integrations to mobile apps and growth marketing, Izone is your full-stack technology partner. Nine years. 100+ launches. One accountable team
                 </motion.p>
               </div>
 
@@ -428,7 +458,7 @@ const Index = () => {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-32 bg-surface relative overflow-hidden">
+      <section id="services" className="py-20 md:py-32 bg-surface relative overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
         
         <div className="container-custom px-6 relative z-10">
@@ -456,20 +486,48 @@ const Index = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            onMouseLeave={() => setHoveredServiceIndex(null)}
           >
             {services.map((service, index) => (
               <motion.div
                 key={index}
                 variants={fadeInUp}
-                className="group p-10 bg-card border border-border rounded-[2.5rem] shadow-xl hover:shadow-premium-glow transition-all duration-500 hover:-translate-y-3 relative overflow-hidden"
+                onMouseEnter={() => setHoveredServiceIndex(index)}
+                animate={{
+                  scale: hoveredServiceIndex === index ? 1.05 : 1,
+                  opacity: hoveredServiceIndex !== null && hoveredServiceIndex !== index ? 0.4 : 1,
+                }}
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                className="service-card-premium group bg-card border border-border rounded-[2rem] sm:rounded-[2.5rem] shadow-xl hover:shadow-premium-glow relative overflow-hidden h-full min-h-[350px] cursor-pointer flex flex-col items-center justify-center transition-shadow"
               >
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-                <div className="mb-8 w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-lg group-hover:shadow-primary/30">
-                  <service.icon className="w-10 h-10 text-primary group-hover:text-primary-foreground transition-colors" />
+                {/* First Content - Initially Visible */}
+                <div className="first-content p-5 sm:p-6 flex flex-col items-center justify-center text-center">
+                  <div className="mb-4 w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center transition-all duration-500 group-hover:scale-0">
+                    <service.icon className="w-7 h-7 text-primary transition-colors" />
+                  </div>
+                  <h4 className="text-xl font-black text-foreground leading-tight">{service.title}</h4>
                 </div>
-                <h4 className="text-2xl font-black mb-4 text-foreground group-hover:text-primary transition-colors leading-tight">{service.title}</h4>
-                <p className="text-muted-foreground leading-relaxed font-medium italic">{service.description}</p>
+
+                {/* Second Content - Visible on Hover */}
+                <div className="second-content absolute inset-0 p-5 sm:p-6 flex flex-col items-center justify-center text-center bg-primary/[0.03]">
+                  <p className="text-muted-foreground leading-relaxed font-medium italic mb-3 text-xs md:text-sm">{service.description}</p>
+                  {service.details && (
+                    <p className="text-[10px] md:text-xs text-muted-foreground mb-4 line-clamp-3">{service.details}</p>
+                  )}
+                  {service.tags && (
+                    <div className="flex flex-wrap justify-center gap-1.5">
+                      {service.tags.map((tag, i) => (
+                        <span key={i} className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 bg-primary/10 text-primary rounded-full">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Top Border Line */}
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
               </motion.div>
             ))}
           </motion.div>
@@ -477,7 +535,7 @@ const Index = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section id="featured" className="py-32 bg-background relative overflow-hidden">
+      <section id="featured" className="py-20 md:py-32 bg-background relative overflow-hidden">
         <div className="container-custom px-6 relative z-10">
           <div className="text-center mb-24 space-y-4">
             <motion.div
@@ -502,8 +560,8 @@ const Index = () => {
             {/* Left Column */}
             <div className="lg:col-span-4 space-y-12">
               <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="flex items-start gap-6 lg:flex-row-reverse lg:text-right group">
-                <div className="w-20 h-20 shrink-0 bg-card rounded-[2rem] border border-border flex items-center justify-center shadow-xl group-hover:border-primary group-hover:shadow-premium-glow transition-all duration-500">
-                  <Star className="w-10 h-10 text-primary" />
+                <div className="w-16 h-16 md:w-20 md:h-20 shrink-0 bg-card rounded-2xl md:rounded-[2rem] border border-border flex items-center justify-center shadow-xl group-hover:border-primary group-hover:shadow-premium-glow transition-all duration-500">
+                  <Star className="w-8 h-8 md:w-10 md:h-10 text-primary" />
                 </div>
                 <div className="pt-2">
                   <h4 className="text-2xl font-black mb-3 text-foreground group-hover:text-primary transition-colors uppercase tracking-widest">Experience</h4>
@@ -512,8 +570,8 @@ const Index = () => {
               </motion.div>
               
               <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="flex items-start gap-6 lg:flex-row-reverse lg:text-right group">
-                <div className="w-20 h-20 shrink-0 bg-card rounded-[2rem] border border-border flex items-center justify-center shadow-xl group-hover:border-primary group-hover:shadow-premium-glow transition-all duration-500">
-                  <Layers className="w-10 h-10 text-primary" />
+                <div className="w-16 h-16 md:w-20 md:h-20 shrink-0 bg-card rounded-2xl md:rounded-[2rem] border border-border flex items-center justify-center shadow-xl group-hover:border-primary group-hover:shadow-premium-glow transition-all duration-500">
+                  <Layers className="w-8 h-8 md:w-10 md:h-10 text-primary" />
                 </div>
                 <div className="pt-2">
                   <h4 className="text-2xl font-black mb-3 text-foreground group-hover:text-primary transition-colors uppercase tracking-widest">Products</h4>
@@ -544,8 +602,8 @@ const Index = () => {
             {/* Right Column */}
             <div className="lg:col-span-4 space-y-12">
               <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="flex items-start gap-6 group">
-                <div className="w-20 h-20 shrink-0 bg-card rounded-[2rem] border border-border flex items-center justify-center shadow-xl group-hover:border-secondary group-hover:shadow-premium-glow transition-all duration-500">
-                  <Zap className="w-10 h-10 text-secondary" />
+                <div className="w-16 h-16 md:w-20 md:h-20 shrink-0 bg-card rounded-2xl md:rounded-[2rem] border border-border flex items-center justify-center shadow-xl group-hover:border-secondary group-hover:shadow-premium-glow transition-all duration-500">
+                  <Zap className="w-8 h-8 md:w-10 md:h-10 text-secondary" />
                 </div>
                 <div className="pt-2">
                   <h4 className="text-2xl font-black mb-3 text-foreground group-hover:text-secondary transition-colors uppercase tracking-widest">Approach</h4>
@@ -554,8 +612,8 @@ const Index = () => {
               </motion.div>
               
               <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="flex items-start gap-6 group">
-                <div className="w-20 h-20 shrink-0 bg-card rounded-[2rem] border border-border flex items-center justify-center shadow-xl group-hover:border-accent group-hover:shadow-premium-glow transition-all duration-500">
-                  <Shield className="w-10 h-10 text-accent" />
+                <div className="w-16 h-16 md:w-20 md:h-20 shrink-0 bg-card rounded-2xl md:rounded-[2rem] border border-border flex items-center justify-center shadow-xl group-hover:border-accent group-hover:shadow-premium-glow transition-all duration-500">
+                  <Shield className="w-8 h-8 md:w-10 md:h-10 text-accent" />
                 </div>
                 <div className="pt-2">
                   <h4 className="text-2xl font-black mb-3 text-foreground group-hover:text-accent transition-colors uppercase tracking-widest">Support</h4>
@@ -597,7 +655,7 @@ const Index = () => {
       </section>
 
       {/* Testimonials section */}
-      <section id="testimonials" className="py-32 bg-background relative overflow-hidden">
+      <section id="testimonials" className="py-20 md:py-32 bg-background relative overflow-hidden">
         <div className="container-custom px-6 relative z-10">
           <div className="text-center mb-24 space-y-4">
             <motion.div
@@ -629,7 +687,7 @@ const Index = () => {
               <motion.div
                 key={i}
                 variants={fadeInUp}
-                className="p-10 bg-card border border-border rounded-[2.5rem] shadow-xl hover:shadow-premium-glow transition-all duration-500 group hover:-translate-y-3 relative overflow-hidden flex flex-col"
+                className="p-8 sm:p-10 bg-card border border-border rounded-[2rem] sm:rounded-[2.5rem] shadow-xl hover:shadow-premium-glow transition-all duration-500 group hover:-translate-y-3 relative overflow-hidden flex flex-col"
               >
                 <div className="flex gap-4 items-center mb-8 relative z-10">
                   <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-secondary p-1 shrink-0">
@@ -657,7 +715,7 @@ const Index = () => {
       </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="py-32 bg-surface relative overflow-hidden">
+      <section id="portfolio" className="py-20 md:py-32 bg-surface relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
         <div className="container-custom px-6 relative z-10">
           <div className="text-center mb-24 space-y-4">
@@ -708,30 +766,30 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-40 bg-background relative overflow-hidden">
+      <section className="py-20 md:py-40 bg-background relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(244,63,94,0.05)_0%,transparent_70%)]" />
-        <div className="container-custom px-6 relative z-10">
+        <div className="container-custom px-4 sm:px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="bg-card p-20 md:p-32 border border-border rounded-[4rem] shadow-premium-glow space-y-12 text-center relative overflow-hidden group"
+            className="bg-card p-8 sm:p-16 md:p-32 border border-border rounded-[2rem] sm:rounded-[4rem] shadow-premium-glow space-y-12 text-center relative overflow-hidden group"
           >
-            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary via-secondary to-accent" />
+            <div className="absolute top-0 left-0 w-full h-1 sm:h-2 bg-gradient-to-r from-primary via-secondary to-accent" />
             <div className="space-y-6">
-              <h2 className="text-4xl md:text-6xl font-bold text-foreground tracking-tight leading-tight">
-                Let's Discuss your <br />
-                <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Digital Future.</span>
+              <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight leading-tight">
+                <span className="block text-foreground">Let's Discuss your</span>
+                <span className="block text-primary">Digital Future.</span>
               </h2>
-              <p className="text-xl md:text-2xl text-muted-foreground/80 font-medium italic leading-relaxed max-w-3xl mx-auto">
+              <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground/80 font-medium italic leading-relaxed max-w-3xl mx-auto">
                 Join the fleet of successful enterprises engineered by Izone Technologies. Our crew is standing by to launch your next mission.
               </p>
             </div>
             <div className="pt-8">
               <Link to="/get-started" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-                <Button className="bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:opacity-90 font-black py-10 px-16 text-2xl rounded-2xl shadow-premium-glow transition-all hover:-translate-y-2 hover:scale-110 active:scale-95 group">
+                <Button className="bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:opacity-90 font-black py-6 px-10 md:py-10 md:px-16 text-lg sm:text-xl md:text-2xl rounded-2xl shadow-premium-glow transition-all hover:-translate-y-2 hover:scale-110 active:scale-95 group">
                    Launch Project
-                   <ArrowRight className="ml-3 w-8 h-8 transition-transform group-hover:translate-x-2" />
+                   <ArrowRight className="ml-3 w-6 h-6 md:w-8 md:h-8 transition-transform group-hover:translate-x-2" />
                 </Button>
               </Link>
             </div>

@@ -79,9 +79,9 @@ const WhatsappMarketing = () => {
             <motion.span initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} className="inline-block px-5 py-2 rounded-2xl bg-[hsl(var(--primary))]/10 border border-[hsl(var(--primary))]/30 text-[hsl(var(--primary))] text-sm font-black uppercase tracking-widest mb-4">
               Conversational Influence
             </motion.span>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-slate-900 dark:text-primary-foreground leading-tight">
-              Marketing That
-              <span className="bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--accent))] bg-clip-text text-transparent block mt-2">Converts Planet-Wide</span>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight">
+              <span className="block text-foreground">Marketing That</span>
+              <span className="text-primary block mt-2">Converts Planet-Wide</span>
             </h1>
             <p className="text-xl text-slate-600 dark:text-slate-400 font-medium leading-relaxed italic">
               Unlock the power of high-frequency WhatsApp marketing protocols designed to engage millions and drive exponential business growth.
