@@ -241,19 +241,19 @@ const Development = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-32 bg-slate-50 dark:bg-slate-900 text-center px-6 relative overflow-hidden">
+      <section className="py-20 md:py-32 bg-slate-50 dark:bg-slate-900 text-center px-4 md:px-6 relative overflow-hidden">
          <div className="absolute top-0 right-0 w-64 h-64 bg-[hsl(var(--primary))]/10 rounded-full blur-3xl"></div>
-         <div className="container-custom px-full max-w-4xl relative z-10">
+         <div className="container-custom px-0 md:px-full max-w-4xl relative z-10">
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-white dark:bg-slate-950 p-16 md:p-20 border border-slate-100 dark:border-slate-800 rounded-[3rem] shadow-2xl space-y-10 group"
+              className="bg-white dark:bg-slate-950 p-8 md:p-20 border border-slate-100 dark:border-slate-800 rounded-[2rem] md:rounded-[3rem] shadow-2xl space-y-6 md:space-y-10 group w-[90%] max-w-[360px] md:w-full md:max-w-none mx-auto"
             >
-               <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-primary-foreground mb-6 leading-tight tracking-tight">Ready to Build Your Project?</h2>
-               <p className="text-xl text-slate-600 dark:text-slate-400 mb-8 leading-relaxed font-medium max-w-2xl mx-auto">Let's discuss your specific needs and create a tailored roadmap for your digital success.</p>
-               <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-                 <Button className="bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--accent))] hover:opacity-90 text-primary-foreground font-bold py-8 px-14 text-xl rounded-2xl shadow-xl shadow-primary/20 transition-all hover:-translate-y-2 group-hover:scale-105 active:scale-95">Start Your Project</Button>
+               <h2 className="text-2xl md:text-5xl font-bold text-slate-900 dark:text-primary-foreground mb-4 md:mb-6 leading-tight tracking-tight">Ready to Build Your Project?</h2>
+               <p className="text-base md:text-xl text-slate-600 dark:text-slate-400 mb-6 md:mb-8 leading-relaxed font-medium max-w-2xl mx-auto">Let's discuss your specific needs and create a tailored roadmap for your digital success.</p>
+               <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="block w-full md:inline-block md:w-auto">
+                 <Button className="w-full md:w-auto bg-gradient-to-r from-[hsl(var(--primary))] to-[hsl(var(--accent))] hover:opacity-90 text-primary-foreground font-bold py-6 md:py-8 px-8 md:px-14 text-lg md:text-xl rounded-xl md:rounded-2xl shadow-xl shadow-primary/20 transition-all hover:-translate-y-2 group-hover:scale-105 active:scale-95 box-border">Start Your Project</Button>
                </Link>
             </motion.div>
          </div>

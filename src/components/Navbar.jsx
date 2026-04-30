@@ -279,10 +279,16 @@ export function Navbar() {
 
 
         {/* Mobile Menu Button */}
-        <div className="lg:hidden flex items-center gap-2">
-          <ThemeToggle />
-          <button onClick={() => setIsOpen(!isOpen)} className="p-2 text-slate-700 dark:text-slate-300">
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+        <div className="lg:hidden flex items-center gap-3">
+          <div className="flex items-center">
+            <ThemeToggle />
+          </div>
+          <button 
+            onClick={() => setIsOpen(!isOpen)} 
+            className="p-2 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors"
+            aria-label="Toggle menu"
+          >
+            {isOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
       </div>

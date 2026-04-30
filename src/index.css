@@ -59,6 +59,10 @@
   }
 }
 /* Base Styles */
+html, body {
+  overflow-x: hidden;
+}
+
 body {
   font-family: "Poppins", system-ui, sans-serif;
   background-color: hsl(var(--background));
